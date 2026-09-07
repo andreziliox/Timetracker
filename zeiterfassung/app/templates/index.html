@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1220">
+  <title>Zeiterfassung</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+  <script defer src="{{ url_for('static', path='js/app.js') }}"></script>
+</head>
+<body>
+  <main class="kiosk-shell">
+    <section class="kiosk-card" aria-live="polite">
+      <header class="kiosk-header">
+        <div>
+          <p class="eyebrow">NFC-Terminal</p>
+          <h1>Zeiterfassung</h1>
+        </div>
+        <time id="clock" class="clock">--:--:--</time>
+      </header>
+
+      <section id="welcome-panel" class="welcome-panel">
+        <div class="nfc-symbol" aria-hidden="true">NFC</div>
+        <h2 id="status-title">Bitte Chip vorhalten</h2>
+        <p id="status-text">Halte deinen NFC-Chip kurz vor den Leser.</p>
+      </section>
+
+      <section id="employee-panel" class="employee-panel hidden">
+        <p class="greeting" id="greeting">Hallo</p>
+        <p class="instruction">Was möchtest du buchen?</p>
+
+        <div class="actions" role="group" aria-label="Zeitbuchung">
+          <button class="action-button come" data-action="Kommen" type="button">
+            <span class="button-icon">▶</span>
+            <span>Kommen</span>
+          </button>
+          <button class="action-button pause" data-action="Pause" type="button">
+            <span class="button-icon">Ⅱ</span>
+            <span>Pause</span>
+          </button>
+          <button class="action-button leave" data-action="Gehen" type="button">
+            <span class="button-icon">■</span>
+            <span>Gehen</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="day-panel" class="day-panel hidden">
+        <div class="day-heading">
+          <h2>Dein heutiger Log</h2>
+          <span id="day-total" class="day-total"></span>
+        </div>
+        <ul id="booking-list" class="booking-list"></ul>
+      </section>
+
+      <p id="message" class="message" role="status"></p>
+    </section>
+  </main>
+</body>
+</html>
